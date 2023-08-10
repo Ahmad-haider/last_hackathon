@@ -18,7 +18,7 @@ const doSignUp = async (req, res) => {
         const user = new usersCollection({
             email: req.body.email,
             passwordHash: passwordHash,
-            name: req.body.firstName,
+            name: req.body.name,
             
         });
         const result = await user.save()
@@ -80,12 +80,10 @@ const doLogin = async (req, res) => {
         console.log('====================================');
 
         res.status(200).json({
-            message: 'user is sucessfully resgistered!',
-            data: {
-                email: req.body.email,
-                name: userData.name,
-                token
-            }
+           
+                role: userData.role,
+                message: "success"
+           
         })
     } catch (error) {
         console.log("error", error);
